@@ -28,8 +28,8 @@ router.post("/", async (req, res) => {
 
     })
     
-    game.addGenres(searchGenres);
-    
+    game.setGenres(searchGenres);
+
     res.status(200).send(game)
 
 });
