@@ -6,6 +6,8 @@ const { Videogames, Genres } = require("../db");
 
 const router = Router()
 
+
+///////////////////////////////////////////GET VIDEOGAMES FROM API/////////////////////////////////////////////////
 const getInfoById = async function(id) {
     const apiUrl = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
     let e = apiUrl.data
@@ -22,32 +24,41 @@ const getInfoById = async function(id) {
     }
 
 
+///////////////////////////////////////////GET VIDEOGAMES FROM DATABASE////////////////////////////////////////////
+const dbVideogames = async function(gameId){
+
+    const gameDB = await Videogames?.findOne({
+        where: {
+            id: gameId
+        },
+        include: {
+            model: Genres, 
+            attributes: ['name'],
+            through: {
+                attributes:[]
+            }
+        }
+    })
+    return gameDB;
+}
+
 
 router.get("/:gameId", async (req, res) => {
     
     const { gameId } = req.params;
     console.log(gameId)
   
-    if (gameId.includes("-")) {
-            
-         const gameDB = await Videogames?.findOne({
-            where: {
-                id: gameId
-            },
-            include: {
-                model: Genres, 
-                attributes: ['name'],
-                through: {
-                    attributes:[]
-                }
-            }
-        })
+    if(gameId){
+        if (gameId.includes("-")) {
+            const dbDetails = await dbVideogames(gameId)
+            res.status(200).json(dbDetails)
 
-        res.status(200).json(gameDB)
-
-    }else {
-        const apiDetails = await getInfoById(gameId)
-        res.status(200).json(apiDetails)
+        }else {
+            const apiDetails = await getInfoById(gameId)
+            res.status(200).json(apiDetails)
+        }   
+    } else{
+        res.status(404).json("Requested ID not found")
     }
   
 });
