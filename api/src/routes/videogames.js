@@ -36,7 +36,7 @@ const dbVideogames = async function(){
             }
         }
     })
-    console.log(dbAll)
+ 
    const totalDb = await dbAll?.map(e => {
         return {
             id: e.id,
@@ -45,7 +45,7 @@ const dbVideogames = async function(){
             genres: e.Genres?.map(v => v.name)
         }
     });
-    console.log(totalDb)
+  
     return totalDb;
 }
 
@@ -79,36 +79,7 @@ router.get("/", async (req, res) => {
     
 })
 
-// const searchByName = async (name) => {
 
-//     const nameAxiosApi = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`);
-    
-//      const resName = await nameAxiosApi.data.results.map((v) => {
-//       return {
-//         name: v.name,
-//         image: v.background_image,
-//         genres: v.genres?.map((v) => v.name)
-//       };
-//     });
-   
-//     return resName;
-//   };
- 
-//   const getNamebyDB = async (name) => {
-//     const dbInfo = await dbVideoGameInfo();
-//     const filterName = dbInfo.filter((videogame) =>
-//       videogame.name.includes(name)
-//     );
-//     return filterName;
-//   };
-  
-//   const getNameInfo = async (name) => {
-//     const namebyApi = await getNameByApi(name);
-//     const namebyDB = await getNamebyDB(name);
-//     const getNameAllInfo = namebyApi.concat(namebyDB);
-  
-//     return getNameAllInfo;
-// };
 
 
 
