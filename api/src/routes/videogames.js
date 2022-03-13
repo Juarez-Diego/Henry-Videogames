@@ -2,23 +2,18 @@ require('dotenv').config();
 const { Router } = require('express');
 const axios = require("axios");
 const {API_KEY} = process.env;
-const { Videogame, Genres } = require("../db");
+const { Videogames, Genres } = require("../db");
 
 const router = Router()
 
-
-const datosApi = async function(){
+/////////////////////////////////////////// GET VIDEOGAMES FROM API /////////////////////////////////////////////////
+const datosApi = async function(name = ""){
     let array = [];
    for(let i = 1; i < 6; i++){
-        const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
+        const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}&search=${name}`)
         array = array.concat(apiUrl.data.results)
     }
-    return array;
-}
-
-const mapeoFinal = async function(){
-    const temp = await datosApi()
-    const total = temp.map(e => {
+    const total = array.map(e => {
         return {
             id: e.id,
             name: e.name,
@@ -28,9 +23,11 @@ const mapeoFinal = async function(){
     });
     return total;
 }
-////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////// GET VIDEOGAMES FROM DATABASE ////////////////////////////////////////////
 const dbVideogames = async function(){
-    const dbAll = await Videogame?.findAll({
+    const dbAll = await Videogames?.findAll({
         include: {
             model: Genres,
             attributes: ["name"],
@@ -39,22 +36,26 @@ const dbVideogames = async function(){
             }
         }
     })
+    console.log(dbAll)
    const totalDb = await dbAll?.map(e => {
         return {
             id: e.id,
             name: e.name,
             background_image: e.background_image,
-            genres: e.genres
+            genres: e.Genres?.map(v => v.name)
         }
-    })
-
+    });
+    console.log(totalDb)
     return totalDb;
 }
-////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////// JOIN VIDEOGAMES FROM API AND DATABSE //////////////////////////////////////
 const allVideogames = async function(){
-    const api = await mapeoFinal();
+    const api = await datosApi();
     const db = await dbVideogames()
     const all = api.concat(db)
+    console.log(all.length)
     return all;
 }
 
@@ -77,6 +78,37 @@ router.get("/", async (req, res) => {
         }
     
 })
+
+// const searchByName = async (name) => {
+
+//     const nameAxiosApi = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`);
+    
+//      const resName = await nameAxiosApi.data.results.map((v) => {
+//       return {
+//         name: v.name,
+//         image: v.background_image,
+//         genres: v.genres?.map((v) => v.name)
+//       };
+//     });
+   
+//     return resName;
+//   };
+ 
+//   const getNamebyDB = async (name) => {
+//     const dbInfo = await dbVideoGameInfo();
+//     const filterName = dbInfo.filter((videogame) =>
+//       videogame.name.includes(name)
+//     );
+//     return filterName;
+//   };
+  
+//   const getNameInfo = async (name) => {
+//     const namebyApi = await getNameByApi(name);
+//     const namebyDB = await getNamebyDB(name);
+//     const getNameAllInfo = namebyApi.concat(namebyDB);
+  
+//     return getNameAllInfo;
+// };
 
 
 
