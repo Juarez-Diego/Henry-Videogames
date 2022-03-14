@@ -96,14 +96,12 @@ const getNameAll = async function(GaName) {
 
  router.get("/", async (req, res) => {
 
-  const {vname} = req.query;
-    // const vname = "grand";
+  const {name} = req.query
   
-  console.log(vname, 22)
-  if (vname) {
-    console.log(vname)
-    const finalFunction = await getNameAll(vname);
-    let videogameName = await finalFunction?.filter((e) => e.name.toLowerCase().includes(vname.toLowerCase()));
+  if (name) {
+
+    const finalFunction = await getNameAll(name);
+    let videogameName = await finalFunction?.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
     videogameName.length ? res.status(200).send(videogameName) : res.status(400).send("Game not found");
 
   } else {
