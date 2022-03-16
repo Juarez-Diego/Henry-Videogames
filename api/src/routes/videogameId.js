@@ -39,7 +39,22 @@ const dbVideogames = async function(gameId){
             }
         }
     })
-    return gameDB;
+    let temp = [];
+    temp.push(gameDB)
+    const totalDb = temp?.map(e => {
+        return {
+            id: e.id,
+            name: e.name,
+            released: e.released,
+            background_image: e.background_image,
+            rating: e.rating,
+            parent_platforms: e.parent_platforms,
+            genres: e.Genres?.map(v => v.name),
+            description: e.description
+        }
+    });
+  
+    return totalDb[0];
 }
 
 

@@ -25,7 +25,6 @@ router.post("/", async (req, res) => {
         where: {
             name: genres
         },
-
     })
     
     game.setGenres(searchGenres);

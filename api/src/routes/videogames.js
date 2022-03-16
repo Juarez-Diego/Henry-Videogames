@@ -80,7 +80,7 @@ const getNameByApi = async function(gameName) {
 
 const getNamebyDB = async function(Gname) {
   const db = await dbVideogames();
-  const filterName = db.filter((e) => e.name.includes(Gname));
+  const filterName = db.filter((e) => e.name.toLowerCase().includes(Gname.toLowerCase()));
 
   return filterName;
 };
