@@ -19,7 +19,8 @@ const datosApi = async function(){
             id: e.id,
             name: e.name,
             background_image: e.background_image,
-            genres: e.genres?.map(e => e.name)
+            genres: e.genres?.map(e => e.name),
+            rating: e.rating
         }
     });
     return total;
@@ -43,7 +44,8 @@ const dbVideogames = async function(){
             id: e.id,
             name: e.name,
             background_image: e.background_image,
-            genres: e.Genres?.map(v => v.name)
+            genres: e.Genres?.map(v => v.name),
+            rating: e.rating
         }
     });
   
@@ -71,7 +73,8 @@ const getNameByApi = async function(gameName) {
       id: e.id,
       name: e.name,
       background_image: e.background_image,
-      genres: e.genres?.map((v) => v.name)
+      genres: e.genres?.map((v) => v.name),
+      rating: e.rating
     };
   });
   
