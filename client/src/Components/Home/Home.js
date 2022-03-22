@@ -47,7 +47,7 @@ const pages = function(pageNumber) {
 
     return(
         <div className="home">
-            <Nav />
+            {/* <Nav /> */}
             <h1 className="title">Componente Home</h1>
             <SearchBar />
             <Filters />
