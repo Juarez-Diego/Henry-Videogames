@@ -50,7 +50,7 @@ const dbVideogames = async function(gameId){
             rating: e.rating,
             parent_platforms: e.parent_platforms,
             genres: e.Genres?.map(v => v.name),
-            description: e.description
+            description: e.description,
         }
     });
   

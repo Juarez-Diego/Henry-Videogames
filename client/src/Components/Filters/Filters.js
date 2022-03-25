@@ -20,15 +20,15 @@ function sortAlpha(e){
 function sortRating(e){
 	e.preventDefault()
 	dispatch(sortByRating(e.target.value))
-	setCurrentPage(1)
-	setTemp("Sorted " + e.target.value)
 }
+
 function filterGenres(e) {
 	dispatch(filterByGenres(e.target.value))
 	setRenderPage()
 };
 
 function filterSource(e){
+	e.preventDefault()
 	dispatch(filterBySource(e.target.value))
 	setRenderPage()
 }
@@ -37,9 +37,9 @@ function filterSource(e){
     return(
         <div>
             <div>
-            <span>Filter by Source: </span>
-			<select >
-			  {/* <option default value=""></option> */}
+            <span >Filter by Source: </span>
+			<select onChange={e => filterSource(e)}>
+			  <option value="All">All</option>
 			  <option value="API">API</option>
 			  <option value="Database">Database</option>
     		</select>
@@ -49,7 +49,6 @@ function filterSource(e){
 			<div>
             <span>Alphabetical Order: </span>
 			<select onChange={e => sortAlpha(e)}>
-			  <option default value="Choose"></option>
 			  <option value="Ascending">A-Z</option>
 			  <option value="Descending">Z-A</option>
 		  	</select>
@@ -58,7 +57,6 @@ function filterSource(e){
 		    <div>
             <span>Order By Rating: </span>
 			<select onChange={e => sortRating(e)}>
-			  {/* <option default value=""></option> */}
 			  <option value="High">High</option>
 			  <option value="Low">Low</option>
     		</select>

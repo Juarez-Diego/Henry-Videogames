@@ -71,7 +71,7 @@ function checkBoxes(e){
 
 function submit(e){
     e.preventDefault()
-    if(Object.values(formErrors).length > 0){
+    if(Object.values(formErrors).length > 0 || input.name === ""){
         alert("Please fill in all the required fields")
     } else{
         dispatch(createVideogame(input))

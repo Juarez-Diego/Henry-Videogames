@@ -53,24 +53,24 @@ function rootReducer(state = initialState, action){
             });
             return{
                 ...state,
-                videogames: alphabet
+                videogames: [...alphabet]
             }
 
         case "SORT_BY_RATING":
             const sortRating = action.payload === "High" ?
             state.videogames.sort((a, b) => {
-                if(a.rating > b.rating) return 1;
-                if(b.rating > a.rating) return -1
+                if(a.rating < b.rating) return 1;
+                if(b.rating < a.rating) return -1
                 return 0;
             }) :
             state.videogames.sort((a, b) => {
-                if(a.rating > b.rating) return -1;
-                if(b.rating > a.rating) return 1;
+                if(a.rating < b.rating) return -1;
+                if(b.rating < a.rating) return 1;
                 return 0;
             })
             return {
                 ...state,
-                videogames: sortRating
+                videogames: [...sortRating]
             }
             
         case "FILTER_BY_GENRES":
@@ -88,8 +88,23 @@ function rootReducer(state = initialState, action){
                 videogames: filtering
             }
 
-        // case "FILTER_BY_SOURCE":
-        //     const source = action.payload === "API" ? 
+        case "FILTER_BY_SOURCE":
+            if (action.payload === "All") {
+                return {
+                  ...state,
+                  videogames: state.allVideogamesCopy
+                };
+              } else if (action.payload === "Database") {
+                return {
+                  ...state,
+                  videogames: state.allVideogamesCopy.filter((e) => e.createdInDb == true)
+                };
+              } else {
+                return {
+                  ...state,
+                  videogames: state.allVideogamesCopy.filter((e) => e.createdInDb === undefined)
+                };
+              }
 
         default: return state;
     }

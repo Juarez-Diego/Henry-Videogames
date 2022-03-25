@@ -44,7 +44,8 @@ const dbVideogames = async function(){
             name: e.name,
             background_image: e.background_image,
             genres: e.Genres?.map(v => v.name),
-            rating: e.rating
+            rating: e.rating,
+            createdInDb: e.createdInDb
         }
     });
   

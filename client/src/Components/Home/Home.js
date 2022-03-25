@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Nav from "../Nav/Nav";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar.js"
 import Filters from "../Filters/Filters";
@@ -47,7 +46,6 @@ const pages = function(pageNumber) {
 
     return(
         <div className="home">
-            {/* <Nav /> */}
             <h1 className="title">Componente Home</h1>
             <SearchBar />
             <Filters />
@@ -60,7 +58,6 @@ const pages = function(pageNumber) {
 			/>
 			</div>
 
-            {console.log()}
             {
 				currentVideogame?.map(e => {
 					return (
