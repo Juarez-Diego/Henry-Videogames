@@ -10,17 +10,19 @@ const router = Router()
 ///////////////////////////////////////////GET VIDEOGAMES FROM API/////////////////////////////////////////////////
 const getInfoById = async function(id) {
     const apiUrl = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
-    let e = apiUrl.data
-        return {
-            id: e.id,
-            name: e.name,
-            released: e.released,
-            background_image: e.background_image,
-            rating: e.rating,
-            parent_platforms: e.parent_platforms?.map(e => e.platform.name),
-            genres: e.genres?.map(e => e.name),
-            description: e.description
+    let array = [];
+    let e = {
+            id: apiUrl.data.id,
+            name: apiUrl.data.name,
+            released: apiUrl.data.released,
+            background_image: apiUrl.data.background_image,
+            rating: apiUrl.data.rating,
+            parent_platforms: apiUrl.data.parent_platforms?.map(e => e.platform.name),
+            genres: apiUrl.data.genres?.map(e => e.name),
+            description: apiUrl.data.description
         }
+        array.push(e)
+        return array;
     }
 
 
@@ -53,8 +55,7 @@ const dbVideogames = async function(gameId){
             description: e.description,
         }
     });
-  
-    return totalDb[0];
+    return totalDb;
 }
 
 

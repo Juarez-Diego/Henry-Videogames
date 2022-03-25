@@ -21,18 +21,17 @@ export function Home(){
 
     useEffect(() => {
         dispatch(getVideogames())
-      },[])
+      },[dispatch])
 
-      useEffect(() => {
-        dispatch(getGenres());
-    }, [dispatch])
+    //   useEffect(() => {
+    //     dispatch(getGenres());
+    // }, [dispatch])
 
   // Setting the local states: 
 // const [loading, setLoading] = useState(false)
 const [currentPage, setCurrentPage] = useState(1)
 const [videogamesPerPage, setVideogamesPerPage] = useState(15)
-// const [temp, setTemp] = useState("")
-// const [renderPage, setRenderPage] = useState("")
+
 
 //Get current videogames
 const indexOfLastVideogame = currentPage * videogamesPerPage;
@@ -43,10 +42,16 @@ const pages = function(pageNumber) {
 	setCurrentPage(pageNumber)
 }
 
+// Button to refresh Home
+function refresh(e){
+    e.preventDefault();
+    dispatch(getVideogames());
+  }
 
     return(
         <div className="home">
             <h1 className="title">Componente Home</h1>
+            <button onClick={(e) => refresh(e)}>Clear Filters</button>
             <SearchBar />
             <Filters />
 

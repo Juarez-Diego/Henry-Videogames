@@ -13,7 +13,8 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 videogames: action.payload,
-                allVideogamesCopy: action.payload
+                allVideogamesCopy: action.payload,
+                videogameDetail: []
             }
             
         case "GET_VIDEOGAME_BY_NAME": 
@@ -76,7 +77,7 @@ function rootReducer(state = initialState, action){
         case "FILTER_BY_GENRES":
             const getGenres = state.allVideogamesCopy
             const filtering = action.payload === "All" ? getGenres :
-            getGenres.filter(e => {
+            state.videogames.filter(e => {
                 if(e.genres) {
                     if(e.genres.includes(action.payload)) {
                         return e
@@ -93,11 +94,12 @@ function rootReducer(state = initialState, action){
                 return {
                   ...state,
                   videogames: state.allVideogamesCopy
+                  
                 };
               } else if (action.payload === "Database") {
                 return {
                   ...state,
-                  videogames: state.allVideogamesCopy.filter((e) => e.createdInDb == true)
+                  videogames: state.allVideogamesCopy.filter((e) => e.createdInDb === true)
                 };
               } else {
                 return {
