@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { Router } = require('express');
-const axios = require("axios");
-const {API_KEY} = process.env;
+const axios = require("axios");const {API_KEY} = process.env;
 const { Videogames, Genres } = require("../db");
 
 const router = Router()
@@ -38,7 +37,7 @@ const dbVideogames = async function(){
             }
         }
     })
- 
+ console.log(dbAll)
    const totalDb = await dbAll?.map(e => {
         return {
             id: e.id,
