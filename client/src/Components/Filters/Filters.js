@@ -3,6 +3,7 @@ import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
 
 import { sortAlphabetically, sortByRating, filterByGenres, filterBySource } from "../../Actions";
+import "../Filters/Filters.css"
 
 export function Filters(){
 
@@ -35,7 +36,7 @@ function filterSource(e){
  
 
     return(
-        <div>
+        <div className="filters">
             <div>
             <span >Filter by Source: </span>
 			<select onChange={e => filterSource(e)}>

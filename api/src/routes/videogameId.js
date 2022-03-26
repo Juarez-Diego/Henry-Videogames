@@ -27,11 +27,11 @@ const getInfoById = async function(id) {
 
 
 ///////////////////////////////////////////GET VIDEOGAMES FROM DATABASE////////////////////////////////////////////
-const dbVideogames = async function(gameId){
+const dbVideogames = async function(vid){
 
     const gameDB = await Videogames?.findOne({
         where: {
-            id: gameId
+            id: vid
         },
         include: {
             model: Genres, 
@@ -62,7 +62,7 @@ const dbVideogames = async function(gameId){
 //     const api = await getInfoById();
 //     const db = await dbVideogames()
 //     const all = api.concat(db)
-    
+
 //     return all;
 // }
 
@@ -72,20 +72,23 @@ router.get("/:gameId", async (req, res) => {
     // const finalFunction = await allVideogames();
   
     if(gameId){
-        if (gameId.includes("-")) {
+        if(!isNaN(gameId)) {
+            const apiDetails = await getInfoById(gameId)
+            res.status(200).json(apiDetails)
+
+        }else if (gameId.includes("-")) {
             const dbDetails = await dbVideogames(gameId)
             res.status(200).json(dbDetails)
 
-        }else {
-            const apiDetails = await getInfoById(gameId)
-            res.status(200).json(apiDetails)
-        }   
+        }else{
+            res.status(404).send("Requested ID not found")
+        }
     } else {
         res.status(404).send("Requested ID not found")
     }
 
     //  if(gameId) {
-    //     const game = await finalFunction.filter(e => e.id == gameId)
+    //     const game = await finalFunction.filter(e => e.dataValues.id == gameId || e.id == gameId)
 
     //     if(game.length > 0) {
     //         res.status(200).json(game)

@@ -37,7 +37,6 @@ const dbVideogames = async function(){
             }
         }
     })
- console.log(dbAll)
    const totalDb = await dbAll?.map(e => {
         return {
             id: e.id,

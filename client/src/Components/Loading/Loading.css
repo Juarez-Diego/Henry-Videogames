@@ -1,5 +1,9 @@
 .loader {
-    margin: auto;
+    position: absolute; /* or absolute */
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;  
     padding: 10px;
     border: 16px solid #f3f3f3;
     border-radius: 50%;

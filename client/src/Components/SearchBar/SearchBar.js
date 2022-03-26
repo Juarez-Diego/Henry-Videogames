@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux"
 import { useState } from "react";
 
 import { getVideogameByName } from "../../Actions";
+import "../SearchBar/SearchBar.css"
 
 export function SearchBar(){
 const [searchWord, setSearchWord] = useState("")
@@ -19,8 +20,8 @@ function handleSubmit(e){
 }
 
     return(
-        <div>
-            <input type="text" placeholder="Search by name..." onChange={e => handleInputChange(e)}></input>
+        <div className="searchbar">
+            <input className="input" type="text" placeholder="Search by name..." onChange={e => handleInputChange(e)}></input>
             <button type="submit" onClick={e => handleSubmit(e)} className="search-button">Search</button>
         </div>
     )

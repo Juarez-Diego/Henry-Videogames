@@ -1,4 +1,6 @@
 .paginado_list{
+    margin: 0 auto;
+    margin-top: 50px;
     list-style: none;
     display: inline-flex;
     margin-right: 40px;
@@ -21,4 +23,7 @@
       0 0 92px #fff,
       0 0 102px #fff,
       0 0 151px #fff;
+}
+.paginado_list:hover{
+  background-color: #22007C
 }

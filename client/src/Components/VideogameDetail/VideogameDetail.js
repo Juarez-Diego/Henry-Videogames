@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { videogameDetails } from "../../Actions";
+import Loading from "../Loading/Loading";
+import "../VideogameDetail/VideogameDetail.css"
 
 
 export function VideogameDetail(){
@@ -17,27 +19,27 @@ useEffect(() => {
     dispatch(videogameDetails(gameId))
 },[dispatch, gameId])
 
-if(Array.isArray(detailedVideogame)) {
+// if(Array.isArray(detailedVideogame)) {
     return(
-        <div>
+        <div className="detail">
             
             {detailedVideogame.length > 0 ? 
             
-                <div>
-                    <img src={detailedVideogame[0].background_image} alt="yummy" width="600px" height="300px" ></img>
-                    <h1>{detailedVideogame[0].name}</h1>
-                    <h2>Genres: {detailedVideogame[0].genres + " "}</h2>
-                    <h3>Rating: {detailedVideogame[0].rating}</h3>
-                    <h3>Platforms: {detailedVideogame[0].parent_platforms + " "}</h3>
+                <div className="detail-container">
+                    <img className="detail-img" src={detailedVideogame[0].background_image} alt="yummy" width="600px" height="300px" ></img>
+                    <h1 className="detail-title">{detailedVideogame[0].name}</h1>
+                    <h2 className="detail-genres">Genres: {detailedVideogame[0].genres + " "}</h2>
+                    <h3 className="detail-rating">Rating: {detailedVideogame[0].rating}</h3>
+                    <h3 className="detail-platforms">Platforms: {detailedVideogame[0].parent_platforms + " "}</h3>
 
-                    <h2>Description</h2>
-                    <p>{detailedVideogame[0].description.replace(/<[^>]*>?/g, '')}</p>
-                </div> :  <p>Fetching videogame...</p>
+                    <h2 className="description-title">Description</h2>
+                    <p className="detail-description">{detailedVideogame[0].description.replace(/<[^>]*>?/g, '')}</p>
+                </div> :  (<Loading />)
             }   
         </div>
     )
 }
-    else{ return detailedVideogame}
-}
+//     else{ return detailedVideogame}
+// }
 
 export default VideogameDetail

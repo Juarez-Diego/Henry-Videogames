@@ -14,7 +14,6 @@ function rootReducer(state = initialState, action){
                 ...state,
                 videogames: action.payload,
                 allVideogamesCopy: action.payload,
-                videogameDetail: []
             }
             
         case "GET_VIDEOGAME_BY_NAME": 

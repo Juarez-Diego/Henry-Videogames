@@ -53,7 +53,7 @@ function refresh(e){
     return(
         <div className="background-image">
         <div className="home">
-            <button onClick={(e) => refresh(e)}>Clear Filters</button>
+            <button className="home-button" onClick={(e) => refresh(e)}>Clear Filters</button>
             <SearchBar />
             <Filters />
             

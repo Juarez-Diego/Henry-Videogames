@@ -1,14 +1,12 @@
-.searchbar{
-    margin-top: 25px;
+.filters{
+    margin-top: 15px;
+    color: antiquewhite;
     height: 50px;
+    width: 800px;
     display: flex;
     margin-left: 60px;
     justify-content: space-around;
     align-items: center;
     border-radius: 15px;
-    float: left;
-}
-
-.input{
-    width: 250px;
+    float: right;
 }

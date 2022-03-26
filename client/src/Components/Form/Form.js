@@ -4,6 +4,8 @@ import { createVideogame } from "../../Actions";
 import { getGenres } from "../../Actions";
 
 
+import "../Form/Form.css"
+
 function formValidation(input){
     let formErrors = {};
 
@@ -40,7 +42,7 @@ const [input, setInput] = useState({
     description: "",
     released: "",
     parent_platforms: [],
-    rating: 0,
+    rating: "",
     genres: [],
     background_image: ""
 })
@@ -80,114 +82,118 @@ function submit(e){
 }
 
     return(
-        <div>
-            <h1>Fill in the fields</h1>
+        <div className="form"> 
+                <h1 className="form-title">Fill in the fields</h1>
+                <button>CREATE!</button>
 
+                <div className="inputs_checkboxes">
             <form onSubmit={submit}>
+
+                <div className="inputs">
                 <label>Title: </label>
-                    <input type="text" value={input.name} name="name" onChange={handleSubmit}></input>
-                    {formErrors.name && (<p>{formErrors.name}</p>)} 
+                    <input className="input-name" type="text" value={input.name} name="name" onChange={handleSubmit}></input>
+                    {formErrors.name && (<p className="warning">{formErrors.name}</p>)} 
                     <br/>
 
                     <label>Released: </label>
-                    <input type="text" value={input.released} name="released" onChange={handleSubmit}></input>
-                    {formErrors.released && (<p>{formErrors.released}</p>)} 
+                    <input  className="input-name" type="text" value={input.released} name="released" onChange={handleSubmit}></input>
+                    {formErrors.released && (<p className="warning">{formErrors.released}</p>)} 
                     <br/>
 
                     <label>Rating: </label>
-                    <input type="text" value={input.rating} name="rating" onChange={handleSubmit}></input>
-                    {formErrors.rating && (<p>{formErrors.rating}</p>)}
+                    <input className="input-name" type="number" value={input.rating} name="rating" onChange={handleSubmit}></input>
+                    {formErrors.rating && (<p className="warning">{formErrors.rating}</p>)}
                     <br/>
 
                     <label>Platforms: </label>
-                    <input type="text" value={input.parent_platforms} name="parent_platforms" onChange={handleSubmit}></input>
-                    {formErrors.parent_platforms && (<p>{formErrors.parent_platforms}</p>)}
+                    <input  className="input-name" type="text" value={input.parent_platforms} name="parent_platforms" onChange={handleSubmit}></input>
+                    {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)}
                     <br/>
 
                     
                     <label>Description: </label>
-                    <textarea value={input.description} name="description" onChange={handleSubmit} />
-                    {formErrors.description && (<p>{formErrors.description}</p>)}
+                    <textarea className="textarea-name" value={input.description} name="description" onChange={handleSubmit} />
+                    {formErrors.description && (<p className="warning">{formErrors.description}</p>)}
                     <br/>
-
+                    </div>
 
         {/* //////////////////////////////CHECKBOXES FOR GENRES/////////////////////// */}
-                    <div>
+                    <div className="checkboxes">
                     <h4>Genres: </h4>
 
-                    <label> Action
+                    <label className="form_boxes"> Action
                     <input 
                     type="checkbox"
                     value="Action"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Indie
+                    <label className="form_boxes"> Indie
                     <input 
                     type="checkbox"
                     value="Indie"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> RPG
+                    <label className="form_boxes"> RPG
                     <input 
                     type="checkbox"
                     value="RPG"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Adventure
+                    <label className="form_boxes"> Adventure
                     <input 
                     type="checkbox"
                     value="Adventure"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Shooter
+                    <label className="form_boxes"> Shooter
                     <input 
                     type="checkbox"
                     value="Shooter"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Casual
+                    <label className="form_boxes"> Casual
                     <input 
                     type="checkbox"
                     value="Casual"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Strategy
+                    <label className="form_boxes"> Strategy
                     <input 
                     type="checkbox"
                     value="Strategy"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Simulation
+                    <label className="form_boxes"> Simulation
                     <input 
                     type="checkbox"
                     value="Simulation"
                     onChange={(e) => checkBoxes(e)}
                     />
                     </label>
-                    <br/>
+                    
 
-                    <label> Puzzle
+                    <label className="form_boxes"> Puzzle
                     <input 
                     type="checkbox"
                     value="Puzzle"
@@ -195,7 +201,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Platformer
+                    <label className="form_boxes"> Platformer
                     <input 
                     type="checkbox"
                     value="Platformer"
@@ -203,7 +209,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Racing
+                    <label className="form_boxes"> Racing
                     <input 
                     type="checkbox"
                     value="Racing"
@@ -211,7 +217,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Massively Multiplayer
+                    <label className="form_boxes"> Massively Multiplayer
                     <input 
                     type="checkbox"
                     value="Massively Multiplayer"
@@ -219,7 +225,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Sports
+                    <label className="form_boxes"> Sports
                     <input 
                     type="checkbox"
                     value="Sports"
@@ -227,7 +233,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Fighting
+                    <label className="form_boxes"> Fighting
                     <input 
                     type="checkbox"
                     value="Fighting"
@@ -235,7 +241,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Board Games
+                    <label className="form_boxes"> Board Games
                     <input 
                     type="checkbox"
                     value="Board Games"
@@ -243,7 +249,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Educational
+                    <label className="form_boxes"> Educational
                     <input 
                     type="checkbox"
                     value="Educational"
@@ -251,7 +257,7 @@ function submit(e){
                     />
                     </label>
 
-                    <label> Card
+                    <label className="form_boxes"> Card
                     <input 
                     type="checkbox"
                     value="Card"
@@ -261,8 +267,8 @@ function submit(e){
 
                     </div>
 
-                <button>Create Videogame</button>
             </form>
+            </div>
         </div>
     )
 }
