@@ -1,9 +1,14 @@
+/* .nav-background{
+    background: rgb(4,59,65);
+    background: linear-gradient(215deg, rgba(4,59,65,1) 0%, rgba(66,66,129,1) 35%, rgba(25,43,47,1) 100%);
+} */
+
 .nav {
     display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	height: 60px;
-    background-color: #04052e;
+    background-color: #043b41;
 }
 
 .navLink{

@@ -4,7 +4,7 @@ import "../Nav/Nav.css";
 
 export function Nav(){
     return (
-        <div>
+        <div className="nav-background">
             <nav className="nav">
                 <Link to="/home" className="navLink">Home</Link>
                 <Link to="/videogame" className="navLink">Create Videogame</Link>

@@ -5,7 +5,7 @@ import "../LandingPage/LandingPage.css"
 
 export function LandingPage() {
     return (
-      <div>
+      <div className='landing-background'>
         <div>
         <h1 className="title">Henry Videogame App</h1>
         <h3 className="description"> A simple web application where you can 
@@ -15,7 +15,7 @@ export function LandingPage() {
 
         <br/>
           <Link to="/home">
-             <button>BRAVO SIX, GOING DARK</button>
+             <button className='landing-button'>START</button>
           </Link>
           </div>
       </div>

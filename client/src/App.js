@@ -8,7 +8,22 @@ import Form from "./Components/Form/Form";
 import VideogameDetail from "./Components/VideogameDetail/VideogameDetail";
 import Nav from "./Components/Nav/Nav";
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getGenres, getVideogames } from "../src/Actions/index"
+
 function App() {
+
+const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getVideogames())
+  },[])
+
+//   useEffect(() => {
+//     dispatch(getGenres());
+// }, [])
+
   return (
     <div className="App">
 

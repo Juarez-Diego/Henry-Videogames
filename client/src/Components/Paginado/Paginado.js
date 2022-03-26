@@ -14,7 +14,7 @@ const pageNumber = [];
                     {
                         pageNumber && pageNumber.map(number => {
                             return(
-                                <li key={number}>
+                                <li key={number} className="paginado_list">
                                     <a onClick={() => pages(number)}>{number}</a>
                                     
                                 </li>

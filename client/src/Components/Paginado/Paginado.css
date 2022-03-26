@@ -1,0 +1,24 @@
+.paginado_list{
+    list-style: none;
+    display: inline-flex;
+    margin-right: 40px;
+    background-color: #04052E;
+    color: antiquewhite;
+    padding: 15px;
+    cursor:pointer;
+
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #b2f7ef;
+    text-shadow:
+      /* White glow */
+      0 0 7px #b2f7ef,
+      0 0 10px #b2f7ef,
+      0 0 21px #b2f7ef,
+      /* Green glow */
+      0 0 42px #fff,
+      0 0 82px #fff,
+      0 0 92px #fff,
+      0 0 102px #fff,
+      0 0 151px #fff;
+}

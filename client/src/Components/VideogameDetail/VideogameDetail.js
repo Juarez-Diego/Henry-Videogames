@@ -17,8 +17,10 @@ useEffect(() => {
     dispatch(videogameDetails(gameId))
 },[dispatch, gameId])
 
+if(Array.isArray(detailedVideogame)) {
     return(
         <div>
+            
             {detailedVideogame.length > 0 ? 
             
                 <div>
@@ -34,6 +36,8 @@ useEffect(() => {
             }   
         </div>
     )
+}
+    else{ return detailedVideogame}
 }
 
 export default VideogameDetail

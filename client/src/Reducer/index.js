@@ -86,7 +86,8 @@ function rootReducer(state = initialState, action){
             })
             return {
                 ...state,
-                videogames: filtering
+                videogames: filtering,
+             
             }
 
         case "FILTER_BY_SOURCE":

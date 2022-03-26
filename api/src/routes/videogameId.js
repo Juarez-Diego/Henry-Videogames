@@ -58,11 +58,18 @@ const dbVideogames = async function(gameId){
     return totalDb;
 }
 
+// const allVideogames = async function(){
+//     const api = await getInfoById();
+//     const db = await dbVideogames()
+//     const all = api.concat(db)
+    
+//     return all;
+// }
 
 router.get("/:gameId", async (req, res) => {
     
     const { gameId } = req.params;
-    console.log(gameId)
+    // const finalFunction = await allVideogames();
   
     if(gameId){
         if (gameId.includes("-")) {
@@ -73,10 +80,23 @@ router.get("/:gameId", async (req, res) => {
             const apiDetails = await getInfoById(gameId)
             res.status(200).json(apiDetails)
         }   
-    } else{
-        res.status(404).json("Requested ID not found")
+    } else {
+        res.status(404).send("Requested ID not found")
     }
-  
+
+    //  if(gameId) {
+    //     const game = await finalFunction.filter(e => e.id == gameId)
+
+    //     if(game.length > 0) {
+    //         res.status(200).json(game)
+    //     }
+    //     else{
+    //         res.status(404).send("Requested ID not found")
+    //     }
+    // }
+    // else{
+    //     res.status(200).send(finalFunction)
+    // }
 });
 
 module.exports = router;
