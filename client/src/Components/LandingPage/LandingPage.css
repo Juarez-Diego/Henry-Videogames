@@ -5,18 +5,23 @@
   background-size: cover;
 }
 
+.landing-content{
+  display: flex;
+  flex-direction: column;
+}
+
 .landing-title{
-  margin: auto;
-  margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     font-size: 2.5rem;
     color: #B2F7EF;
     text-shadow:
       /* White glow */
       0 0 7px #B2F7EF,
-      0 0 10px #B2F7EF,
-      0 0 21px #B2F7EF,
+      0 0 10px #edf6f9,
+      /* 0 0 21px #edf6f9, */
       /* Green glow */
-      0 0 42px #fff,
+      /* 0 0 42px #fff, */
       0 0 82px #fff,
       0 0 92px #fff,
       0 0 102px #fff,
@@ -24,6 +29,7 @@
 }
 
 .description{
+    margin-top: 15px;
     font-size: 1.8rem;
     color: #B2F7EF;
     text-shadow:

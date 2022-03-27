@@ -6,7 +6,8 @@ import "../LandingPage/LandingPage.css"
 export function LandingPage() {
     return (
       <div className='landing-background'>
-        <div>
+
+        <div className='landing-content'>
         <h1 className="landing-title">Henry Videogame App</h1>
         <h3 className="description"> A simple web application where you can 
           find any videogame <br/>
@@ -18,6 +19,7 @@ export function LandingPage() {
              <button className='landing-button'>START</button>
           </Link>
           </div>
+
       </div>
     )
   };

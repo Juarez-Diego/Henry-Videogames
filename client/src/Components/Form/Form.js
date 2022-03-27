@@ -36,6 +36,7 @@ const dispatch = useDispatch();
 const allGenres = useSelector(state => state.diets)
 const allPlatforms = useSelector((state) => state.platforms);
 const [formErrors, setFormErrors] = useState({})
+// const [checked, setChecked] = useState(false)
 
 
 const [input, setInput] = useState({
@@ -100,7 +101,7 @@ function checkBoxes(e){
 }
 
 // function deleteCheckboxes(e){
-//     setInput({
+//     if(e.target === false)setInput({
 //         ...input,
 //         genres: input.genres.filter(d => d !== e)
 //     })
@@ -122,13 +123,14 @@ function submit(e){
 
     return(
         <div className="form"> 
+                <div className="form-title-container">
                 <h1 className="form-title">Fill in the fields</h1>
-                
+                </div>
 
             <div className="inputs_checkboxes">
 
             <form onSubmit={submit}>
-            <button className="form-button">CREATE!</button>
+            
 
                 <div className="inputs">
                 <label>Title: </label>
@@ -152,7 +154,7 @@ function submit(e){
                     {allPlatforms?.map((e, index) => (<option key={index} name="parent_platforms"  value={e}> {e}</option>))}
                     </select>
 
-                    <ul>{input.parent_platforms.map(e => <li onClick={() => handleDelete(e)} key={e}>{e} X</li>)}</ul>
+                    <ul>{input.parent_platforms.map(e => <li className="platform-list" key={e}>{e} <div onClick={() => handleDelete(e)} className="list-delete">X</div></li>)}</ul>
 
                     {/* {input.parent_platforms.map((e,index ) => {
                         return (
@@ -327,7 +329,7 @@ function submit(e){
                     </label>
 
                     </div>
-
+                    <button className="form-button">CREATE</button>
             </form>
             </div>
         </div>
