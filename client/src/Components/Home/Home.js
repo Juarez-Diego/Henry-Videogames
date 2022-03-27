@@ -53,17 +53,19 @@ function refresh(e){
     return(
         <div className="background-image">
         <div className="home">
-            <button className="home-button" onClick={(e) => refresh(e)}>Clear Filters</button>
+            <button className="clear-button" onClick={(e) => refresh(e)}>Clear Filters</button>
+            {/* <button className="home-button" onClick={() => window.location.reload(false)}>Clear Filters</button> */}
+            
             <SearchBar />
             <Filters />
             
-                <div className="home_paginado">
+                {/* <div className="home_paginado"> */}
                 <Paginado 
                     videogamesPerPage={videogamesPerPage}
                     allVideogames={allVideogames.length}
                     pages={pages}
                 />
-                </div> 
+                {/* </div>  */}
 
                 {allVideogames.length == 0 && allVideogames  ? (<Loading />) :
                 <div className="container">
@@ -72,8 +74,15 @@ function refresh(e){
                         return (
                             <div className="card">
                         <Fragment>
-                             <Link to={`/videogame/${e.id}`} style={{ textDecoration: 'none' }} > 
-                             <Card key={e.id} name={e.name} genres={e.genres.map(v => v).join(", ")} background_image={e.background_image} id={e.id} rating={e.rating}/>
+                             <Link to={`/videogame/${e.id}`} className="card-link" style={{ textDecoration: 'none' }} > 
+                             <Card 
+                                key={e.id} 
+                                name={e.name}
+                                genres={e.genres.map(v => v).join(", ")}
+                                background_image={e.background_image}
+                                id={e.id}
+                                rating={e.rating}
+                             />
                             </Link>
                          </Fragment>
                          </div>

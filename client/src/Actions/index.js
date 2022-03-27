@@ -29,6 +29,7 @@ export function getGenres(){
             payload: genres.data
         })
     }
+    
 }
 
 export function getPlatforms(){

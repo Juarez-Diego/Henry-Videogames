@@ -38,17 +38,17 @@ function filterSource(e){
     return(
         <div className="filters">
             <div>
-            <span >Filter by Source: </span>
-			<select onChange={e => filterSource(e)}>
-			  <option value="All">All</option>
-			  <option value="API">API</option>
-			  <option value="Database">Database</option>
+            <span >Filter by Source </span>
+			<select onChange={e => filterSource(e)} className="filters-source">
+			  <option className="filters-option" value="All">All</option>
+			  <option className="filters-option" value="API">API</option>
+			  <option className="filters-option" value="Database">Database</option>
     		</select>
 			</div>
 
 
 			<div>
-            <span>Alphabetical Order: </span>
+            <span>Alphabetical Order </span>
 			<select onChange={e => sortAlpha(e)}>
 			  <option value="Ascending">A-Z</option>
 			  <option value="Descending">Z-A</option>
@@ -56,7 +56,7 @@ function filterSource(e){
 			  </div>
 
 		    <div>
-            <span>Order By Rating: </span>
+            <span>Order By Rating </span>
 			<select onChange={e => sortRating(e)}>
 			  <option value="High">High</option>
 			  <option value="Low">Low</option>
@@ -64,7 +64,7 @@ function filterSource(e){
 			</div>
 
 			<div>
-            <span>Filter By Genre: </span>
+            <span>Filter By Genre </span>
 			<select onChange={e => filterGenres(e)}>
 			  	<option value="All"> All </option>
 		      	<option value="Action">Action</option>

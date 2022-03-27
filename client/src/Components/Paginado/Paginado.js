@@ -8,19 +8,14 @@ const pageNumber = [];
         pageNumber.push(i)
     }
     return(
-        <div>
+        <div className="paginado-main">
             <nav>
                 <ul>
-                    {
-                        pageNumber && pageNumber.map(number => {
-                            return(
-                                <li key={number} className="paginado_list">
-                                    <a onClick={() => pages(number)}>{number}</a>
-                                    
-                                </li>
-                            )
-                        })
-                    }
+                    {pageNumber && pageNumber.map(number => {return(
+                    <li className="paginado_list" key={number}>
+                        <a className="active" onClick={() => pages(number)}>{number}</a> 
+                    </li>
+                    )})}
                 </ul>
             </nav>
         </div>

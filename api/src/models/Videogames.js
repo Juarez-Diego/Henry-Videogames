@@ -29,7 +29,8 @@ module.exports = (sequelize) => {
       type: DataTypes.DECIMAL
     },
     background_image: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: "https://www.dafont.com/forum/attach/orig/9/9/997801.gif"
     },
     createdInDb: {
       type: DataTypes.BOOLEAN,

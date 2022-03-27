@@ -5,9 +5,12 @@
     background: linear-gradient(215deg, rgba(4,59,65,1) 0%, rgba(66,66,129,1) 35%, rgba(25,43,47,1) 100%);
 }
 
-/* .detail-container{
-
-} */
+.detail-container{
+    border: 1.8px solid #000;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; */
+}
 
 .detail-img{
     border-radius: 5px;
@@ -16,26 +19,32 @@
 }
 
 .detail-title{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
 .detail-genres{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
 .detail-rating{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
 .detail-platforms{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
 .description-title{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
 .detail-description{
+    border: 1.8px solid #000;
     color: antiquewhite;
 }
 
