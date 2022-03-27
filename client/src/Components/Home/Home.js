@@ -73,7 +73,7 @@ function refresh(e){
                             <div className="card">
                         <Fragment>
                              <Link to={`/videogame/${e.id}`} style={{ textDecoration: 'none' }} > 
-                             <Card key={e.id} name={e.name} genres={e.genres.map(v => v + ", ")} background_image={e.background_image} id={e.id} rating={e.rating}/>
+                             <Card key={e.id} name={e.name} genres={e.genres.map(v => v).join(", ")} background_image={e.background_image} id={e.id} rating={e.rating}/>
                             </Link>
                          </Fragment>
                          </div>

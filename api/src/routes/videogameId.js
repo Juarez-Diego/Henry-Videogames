@@ -43,7 +43,7 @@ const dbVideogames = async function(vid){
     })
     let temp = [];
     temp.push(gameDB)
-    const totalDb = temp?.map(e => {
+    const totalDb =  temp?.map(e => {
         return {
             id: e.id,
             name: e.name,
@@ -58,9 +58,9 @@ const dbVideogames = async function(vid){
     return totalDb;
 }
 
-// const allVideogames = async function(){
-//     const api = await getInfoById();
-//     const db = await dbVideogames()
+// const allVideogames = async function(Gid){
+//     const api = await getInfoById(Gid);
+//     const db = await dbVideogames(Gid)
 //     const all = api.concat(db)
 
 //     return all;
@@ -69,7 +69,7 @@ const dbVideogames = async function(vid){
 router.get("/:gameId", async (req, res) => {
     
     const { gameId } = req.params;
-    // const finalFunction = await allVideogames();
+    // const finalFunction = await allVideogames(gameId);
   
     if(gameId){
         if(!isNaN(gameId)) {
@@ -79,16 +79,16 @@ router.get("/:gameId", async (req, res) => {
         }else if (gameId.includes("-")) {
             const dbDetails = await dbVideogames(gameId)
             res.status(200).json(dbDetails)
-
         }else{
             res.status(404).send("Requested ID not found")
         }
+
     } else {
-        res.status(404).send("Requested ID not found")
+        res.status(404).send("ID not provided")
     }
 
     //  if(gameId) {
-    //     const game = await finalFunction.filter(e => e.dataValues.id == gameId || e.id == gameId)
+    //     const game = await finalFunction.filter(e => e.id === gameId || e.apiUrl.data.id === gameId)
 
     //     if(game.length > 0) {
     //         res.status(200).json(game)

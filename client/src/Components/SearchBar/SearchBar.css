@@ -12,3 +12,14 @@
 .input{
     width: 250px;
 }
+
+.search-button{
+    margin-left: 5px;
+    cursor: pointer;
+    color: #EFF7F6;
+    border: #EFF7F6 3px solid;
+    background-color: transparent;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 #EFF7F6, 0 0 0.5em 0 #EFF7F6;
+}

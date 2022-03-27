@@ -84,7 +84,7 @@ function submit(e){
     return(
         <div className="form"> 
                 <h1 className="form-title">Fill in the fields</h1>
-                <button>CREATE!</button>
+                <button className="form-button">CREATE!</button>
 
                 <div className="inputs_checkboxes">
             <form onSubmit={submit}>
