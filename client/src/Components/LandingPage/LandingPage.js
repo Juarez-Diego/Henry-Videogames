@@ -7,7 +7,7 @@ export function LandingPage() {
     return (
       <div className='landing-background'>
         <div>
-        <h1 className="title">Henry Videogame App</h1>
+        <h1 className="landing-title">Henry Videogame App</h1>
         <h3 className="description"> A simple web application where you can 
           find any videogame <br/>
             and even create your own.

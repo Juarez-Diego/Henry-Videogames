@@ -3,7 +3,8 @@ const initialState = {
     videogames: [],
     genres: [],
     videogameDetail: [],
-    allVideogamesCopy: []
+    allVideogamesCopy: [],
+    platforms: []
 
 }
 
@@ -26,6 +27,12 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 genres: action.payload
+            }
+
+        case "GET_PLATFORMS":
+            return{
+                ...state,
+                platforms: action.payload
             }
         
         case "GET_A_VIDEOGAME":

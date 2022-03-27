@@ -10,7 +10,7 @@ import Nav from "./Components/Nav/Nav";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getGenres, getVideogames } from "../src/Actions/index"
+import { getPlatforms, getVideogames } from "../src/Actions/index"
 
 function App() {
 
@@ -21,7 +21,7 @@ const dispatch = useDispatch()
   },[])
 
 //   useEffect(() => {
-//     dispatch(getGenres());
+//     dispatch(getPlatforms());
 // }, [])
 
   return (

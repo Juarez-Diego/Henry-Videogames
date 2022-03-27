@@ -5,18 +5,21 @@
   background-size: cover;
 }
 
-.title{
+.landing-title{
   margin: auto;
   margin-bottom: 30px;
     font-size: 2.5rem;
-    color: #b298dc;
+    color: #B2F7EF;
     text-shadow:
       /* White glow */
-      0 0 10px #b298dc,
-      0 0 21px #b298dc,
+      0 0 7px #B2F7EF,
+      0 0 10px #B2F7EF,
+      0 0 21px #B2F7EF,
       /* Green glow */
       0 0 42px #fff,
       0 0 82px #fff,
+      0 0 92px #fff,
+      0 0 102px #fff,
       0 0 151px #fff;
 }
 

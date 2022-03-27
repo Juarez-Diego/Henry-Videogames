@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createVideogame } from "../../Actions";
-import { getGenres } from "../../Actions";
+import { getGenres, getPlatforms } from "../../Actions";
 
 
 import "../Form/Form.css"
@@ -15,9 +15,9 @@ function formValidation(input){
     if(!input.description){
         formErrors.description = "Description is required";
     }
-    if(!input.parent_platforms){
-        formErrors.parent_platforms = "Platforms are required";
-    }
+    // if(!input.parent_platforms){
+    //     formErrors.parent_platforms = "Platforms are required";
+    // }
     if(input.rating < 0 || input.rating > 5){
         formErrors.rating = "Rating must be between 1 and 5";
     }
@@ -34,6 +34,7 @@ function formValidation(input){
 export function Form(){
 const dispatch = useDispatch();
 const allGenres = useSelector(state => state.diets)
+const allPlatforms = useSelector((state) => state.platforms);
 const [formErrors, setFormErrors] = useState({})
 
 
@@ -51,6 +52,11 @@ useEffect(() => {
     dispatch(getGenres())
 }, [])
 
+useEffect(() => {
+    dispatch(getPlatforms());
+}, [])
+
+
 function handleSubmit(e){
     setInput({
         ...input,
@@ -60,7 +66,29 @@ function handleSubmit(e){
         ...input,
         [e.target.name]: e.target.value
     }))
+    console.log(input.parent_platforms)
 }
+
+
+function handleSelectPlatforms(e) {
+    e.preventDefault()
+    if (!input.parent_platforms.includes(e.target.value)) {
+        setInput({
+        ...input,
+        parent_platforms: [...input.parent_platforms, e.target.value],
+      });
+    }
+  }
+
+
+function handleDelete(e) {
+    setInput({
+      ...input,
+      parent_platforms: input.parent_platforms.filter((v) => v !== e),
+    });
+  }
+
+
 
 function checkBoxes(e){
     if(e.target.checked){
@@ -70,6 +98,17 @@ function checkBoxes(e){
         })
     }
 }
+
+// function deleteCheckboxes(e){
+//     setInput({
+//         ...input,
+//         genres: input.genres.filter(d => d !== e)
+//     })
+//     console.log(e.target.checked)
+//     console.log(e.target.value)
+//     console.log(input.genres)
+// }
+
 
 function submit(e){
     e.preventDefault()
@@ -84,10 +123,12 @@ function submit(e){
     return(
         <div className="form"> 
                 <h1 className="form-title">Fill in the fields</h1>
-                <button className="form-button">CREATE!</button>
+                
 
-                <div className="inputs_checkboxes">
+            <div className="inputs_checkboxes">
+
             <form onSubmit={submit}>
+            <button className="form-button">CREATE!</button>
 
                 <div className="inputs">
                 <label>Title: </label>
@@ -104,11 +145,31 @@ function submit(e){
                     <input className="input-name" type="number" value={input.rating} name="rating" onChange={handleSubmit}></input>
                     {formErrors.rating && (<p className="warning">{formErrors.rating}</p>)}
                     <br/>
+                    
 
-                    <label>Platforms: </label>
+                    <span>Platforms: </span>
+                    <select className="input-name" onChange={e => handleSelectPlatforms(e)}>
+                    {allPlatforms?.map((e, index) => (<option key={index} name="parent_platforms"  value={e}> {e}</option>))}
+                    </select>
+
+                    <ul>{input.parent_platforms.map(e => <li onClick={() => handleDelete(e)} key={e}>{e} X</li>)}</ul>
+
+                    {/* {input.parent_platforms.map((e,index ) => {
+                        return (
+                            <div key={e}>
+                                <span key={index}>
+                                <button onClick={(e) => handleDelete(e)}>{e}</button>
+                                </span>
+                            </div>
+                        );
+                    })} */}
+    
+			        {/* <select onChange={(e) => handleSelectPlatforms(e)}> </select> */}
+
+                    {/* <label>Platforms: </label>
                     <input  className="input-name" type="text" value={input.parent_platforms} name="parent_platforms" onChange={handleSubmit}></input>
                     {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)}
-                    <br/>
+                    <br/> */}
 
                     
                     <label>Description: </label>
