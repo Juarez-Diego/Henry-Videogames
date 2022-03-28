@@ -38,7 +38,7 @@ function filterSource(e){
     return(
         <div className="filters">
             <div>
-            <span >Filter by Source </span>
+            <span className="filter-titles">Filter by Source </span>
 			<select onChange={e => filterSource(e)} className="filters-source">
 			  <option className="filters-option" value="All">All</option>
 			  <option className="filters-option" value="API">API</option>
@@ -48,42 +48,42 @@ function filterSource(e){
 
 
 			<div>
-            <span>Alphabetical Order </span>
-			<select onChange={e => sortAlpha(e)}>
-			  <option value="Ascending">A-Z</option>
-			  <option value="Descending">Z-A</option>
+            <span className="filter-titles">Alphabetical Order </span>
+			<select onChange={e => sortAlpha(e)} className="filters-source">
+			  <option className="filters-option" value="Ascending">A-Z</option>
+			  <option  className="filters-option" value="Descending">Z-A</option>
 		  	</select>
 			  </div>
 
 		    <div>
-            <span>Order By Rating </span>
-			<select onChange={e => sortRating(e)}>
-			  <option value="High">High</option>
-			  <option value="Low">Low</option>
+            <span className="filter-titles">Order By Rating </span>
+			<select className="filters-source" onChange={e => sortRating(e)}>
+			  <option className="filters-option"  value="High">High</option>
+			  <option className="filters-option"  value="Low">Low</option>
     		</select>
 			</div>
 
 			<div>
-            <span>Filter By Genre </span>
-			<select onChange={e => filterGenres(e)}>
-			  	<option value="All"> All </option>
-		      	<option value="Action">Action</option>
-				<option value="Indie">Indie</option>
-				<option value="RPG">RPG</option>
-				<option value="Adventure">Adventure</option>
-				<option value="Shooter">Shooter</option>
-				<option value="Casual">Casual</option>
-				<option value="Strategy">Strategy</option>
-				<option value="Simulation">Simulation</option>
-				<option value="Puzzle">Puzzle</option>
-				<option value="Platformer">Platformer</option>;
-                <option value="Racing">Racing</option>;
-                <option value="Massively Multiplayer">Massively Multiplayer</option>;
-                <option value="Sports">Sports</option>;
-                <option value="Fighting">Fighting</option>;
-                <option value="Board Games">Board Games</option>;
-                <option value="Educational">Educational</option>;
-                <option value="Card">Card</option>;
+            <span className="filter-titles">Filter By Genre </span>
+			<select className="filters-source" onChange={e => filterGenres(e)}>
+			  	<option className="filters-option" value="All"> All </option>
+		      	<option className="filters-option" value="Action">Action</option>
+				<option className="filters-option" value="Indie">Indie</option>
+				<option className="filters-option" value="RPG">RPG</option>
+				<option className="filters-option" value="Adventure">Adventure</option>
+				<option className="filters-option" value="Shooter">Shooter</option>
+				<option className="filters-option" value="Casual">Casual</option>
+				<option className="filters-option" value="Strategy">Strategy</option>
+				<option className="filters-option" value="Simulation">Simulation</option>
+				<option className="filters-option" value="Puzzle">Puzzle</option>
+				<option className="filters-option" value="Platformer">Platformer</option>;
+                <option className="filters-option" value="Racing">Racing</option>;
+                <option className="filters-option" value="Massively Multiplayer">Massively Multiplayer</option>;
+                <option className="filters-option" value="Sports">Sports</option>;
+                <option className="filters-option" value="Fighting">Fighting</option>;
+                <option className="filters-option" value="Board Games">Board Games</option>;
+                <option className="filters-option" value="Educational">Educational</option>;
+                <option className="filters-option" value="Card">Card</option>;
 			</select>
 
 			</div>

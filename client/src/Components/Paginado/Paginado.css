@@ -35,12 +35,12 @@
       0 0 151px #fff;
 }
 .paginado_list:hover{
-  color: #b2f7ef;
+  color: #EFF7F6;
   text-shadow:
     /* White glow */
-    0 0 7px #b2f7ef,
-    0 0 10px #b2f7ef,
-    0 0 21px #b2f7ef,
+    0 0 7px #EFF7F6,
+    0 0 10px #EFF7F6,
+    0 0 21px #EFF7F6,
     /* Green glow */
     0 0 42px #fff,
     0 0 82px #fff,

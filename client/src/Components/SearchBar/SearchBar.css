@@ -12,6 +12,7 @@
     color:#EFF7F6
 }
 .input{
+    margin-top: 17px;
     font-size: medium;
     color: #EFF7F6;
     border: #EFF7F6 3px solid;
@@ -29,6 +30,7 @@
 }
 
 .search-button{
+    margin-top: 17px;
     font-size: medium;
     height: 44px;
     width: 70px;

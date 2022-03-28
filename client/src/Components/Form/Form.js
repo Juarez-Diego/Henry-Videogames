@@ -131,27 +131,27 @@ function submit(e){
             
 
                 <div className="inputs">
-                <label>Title: </label>
+                <label className="input-labels">Title: </label>
                     <input className="input-name" type="text" value={input.name} name="name" onChange={handleSubmit}></input>
                     {formErrors.name && (<p className="warning">{formErrors.name}</p>)} 
                     <br/>
 
-                    <label>Released: </label>
+                    <label className="input-labels">Released: </label>
                     <input  className="input-name" type="date" value={input.released} name="released" onChange={handleSubmit}></input>
                     {formErrors.released && (<p className="warning">{formErrors.released}</p>)} 
                     <br/>
 
-                    <label>Rating: </label>
+                    <label className="input-labels">Rating: </label>
                     <input className="input-name" type="number" value={input.rating} name="rating" onChange={handleSubmit}></input>
                     {formErrors.rating && (<p className="warning">{formErrors.rating}</p>)}
                     <br/>
 
-                    <label>Image: </label>
+                    <label className="input-labels">Image: </label>
                     <input className="input-name" type="text" value={input.background_image} name="background_image" onChange={handleSubmit}></input>
                     <br/>
 
-                    <label>Description: </label>
-                    <textarea className="textarea-name" rows="5" value={input.description} name="description" onChange={handleSubmit} />
+                    <label className="input-labels">Description: </label>
+                    <textarea className="input-name"  rows="5" value={input.description} name="description" onChange={handleSubmit} />
                     {formErrors.description && (<p className="warning">{formErrors.description}</p>)}
                     <br/>
                     </div>
@@ -163,7 +163,7 @@ function submit(e){
                     {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)}
                     <span>Platforms: </span>
                     <select className="dropdown-input" onChange={e => handleSelectPlatforms(e)}>
-                    {allPlatforms?.map((e, index) => (<option key={index} name="parent_platforms"  value={e}> {e}</option>))}
+                    {allPlatforms?.map((e, index) => (<option key={index} className="input-select" name="parent_platforms"  value={e}> {e}</option>))}
                     </select>
 
                     <ul>{input.parent_platforms.map(e => <li className="platform-list" key={e}>{e} <div onClick={() => handleDelete(e)} className="list-delete">X</div></li>)}</ul>
@@ -173,7 +173,7 @@ function submit(e){
                     {formErrors.genres  && (<p className="warning">{formErrors.genres}</p>)}   
                     <span>Genres: </span>
                     <select className="dropdown-input" onChange={e => handleSelectGenres(e)}>
-                    {allGenres?.map((e, index) => (<option key={index} name="genres" value={e}> {e}</option>))}
+                    {allGenres?.map((e, index) => (<option key={index} className="input-select" name="genres" value={e}> {e}</option>))}
                     </select>
                     <ul>{input.genres.map(e => <li className="platform-list" key={e}>{e} <div onClick={() => handleDeleteGenres(e)} className="list-delete" >X</div></li>)}</ul>
                     </div>

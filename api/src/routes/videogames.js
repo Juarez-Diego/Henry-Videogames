@@ -104,7 +104,7 @@ const getNameAll = async function(GaName) {
 
     const finalFunction = await getNameAll(name);
     let videogameName = await finalFunction?.filter((e) => e.name.toLowerCase().includes(name.toLowerCase()));
-    videogameName.length ? res.status(200).send(videogameName) : res.status(400).send("Game not found");
+    videogameName.length ? res.status(200).send(videogameName) : res.status(404).send("Game not found");
 
   } else {
     const apiAndDB = await allVideogames();

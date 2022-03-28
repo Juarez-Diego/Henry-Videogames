@@ -33,12 +33,22 @@
     width: 200px;
     cursor: pointer;
     text-decoration: none;
-    color: #EFF7F6;
-    border: #EFF7F6 3px solid;
+    color: #fca311 ;
+    border: #fca311  3px solid;
     background-color: transparent;
     border-radius: 0.25em;
     text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-    box-shadow: inset 0 0 0.5em 0 #EFF7F6, 0 0 0.5em 0 #EFF7F6;
+    box-shadow: inset 0 0 0.5em 0 #fca311 , 0 0 0.5em 0 #fca311 ;
+}
+
+.form-button:hover{
+    text-decoration: none;
+    color: #ccff33 ;
+    border: #ccff33  3px solid;
+    background-color: transparent;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 #ccff33 , 0 0 0.5em 0 #ccff33 ;
 }
 
 .inputs_checkboxes{
@@ -102,28 +112,62 @@
 }
 
 .list-delete{
-    background-color: #000;
     border-radius: 2px;
     text-align: center;
     cursor: pointer;
     color: red;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
     display: inline-block;
     flex-direction: row;
-    border: 1.8px solid #000;
     margin-left: 10px;
     height: 100%;
     width: 20px;
 }
 
+.input-labels{
+    font-size: medium;
+}
+
 .input-name{
+    font-size: medium;
     height: 20px;
     margin-bottom: 20px; 
+    color: #EFF7F6;
+    border: #EFF7F6 3px solid;
+    background-color: transparent;
+    border-radius: 5px;
+    height: 35px;
+    width: 300px;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 #EFF7F6, 0 0 0.5em 0 #EFF7F6;
+}
+.input-name:focus{
+    outline : #EFF7F6;
 }
 
 .dropdown-input{
     height: 20px;
     width: 300px;
     margin: auto;
+    font-size: medium;
+    color: #EFF7F6;
+    border: #EFF7F6 3px solid;
+    background-color: transparent;
+    border-radius: 5px;
+    height: 35px;
+    width: 300px;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 #EFF7F6, 0 0 0.5em 0 #EFF7F6;
+}
+
+.dropdown-input:focus {
+    outline : #EFF7F6;
+}
+
+.input-select{
+    color: black;
+    background-color: #EFF7F6;
+    opacity: .5;
 }
 
 .textarea-name{

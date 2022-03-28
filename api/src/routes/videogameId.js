@@ -8,8 +8,8 @@ const router = Router()
 
 
 ///////////////////////////////////////////GET VIDEOGAMES FROM API/////////////////////////////////////////////////
-const getInfoById = async function(id) {
-    const apiUrl = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
+const getInfoById = async function(idGame) {
+    const apiUrl = await axios.get(`https://api.rawg.io/api/games/${idGame}?key=${API_KEY}`);
     let array = [];
     let e = {
             id: apiUrl.data.id,
@@ -21,14 +21,14 @@ const getInfoById = async function(id) {
             genres: apiUrl.data.genres?.map(e => e.name),
             description: apiUrl.data.description
         }
-        array.push(e)
+         array.push(e)
+        //  console.log(array)
         return array;
     }
 
-
 ///////////////////////////////////////////GET VIDEOGAMES FROM DATABASE////////////////////////////////////////////
 const dbVideogames = async function(vid){
-
+  
     const gameDB = await Videogames?.findOne({
         where: {
             id: vid
@@ -55,22 +55,27 @@ const dbVideogames = async function(vid){
             description: e.description,
         }
     });
+    
+    // console.log(totalDb)
     return totalDb;
 }
 
-// const allVideogames = async function(Gid){
-//     const api = await getInfoById(Gid);
-//     const db = await dbVideogames(Gid)
-//     const all = api.concat(db)
 
-//     return all;
-// }
+
+const allVideogames = async function(Gid){
+    const api = await getInfoById(Gid);
+    const db = await dbVideogames(Gid)
+    const all = api.concat(db)
+
+    return all;
+}
+
 
 router.get("/:gameId", async (req, res) => {
     
     const { gameId } = req.params;
     // const finalFunction = await allVideogames(gameId);
-  
+
     if(gameId){
         if(!isNaN(gameId)) {
             const apiDetails = await getInfoById(gameId)
@@ -87,19 +92,6 @@ router.get("/:gameId", async (req, res) => {
         res.status(404).send("ID not provided")
     }
 
-    //  if(gameId) {
-    //     const game = await finalFunction.filter(e => e.id === gameId || e.apiUrl.data.id === gameId)
-
-    //     if(game.length > 0) {
-    //         res.status(200).json(game)
-    //     }
-    //     else{
-    //         res.status(404).send("Requested ID not found")
-    //     }
-    // }
-    // else{
-    //     res.status(200).send(finalFunction)
-    // }
 });
 
 module.exports = router;
