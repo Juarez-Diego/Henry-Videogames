@@ -12,25 +12,19 @@ import Loading from "../Loading/Loading";
 import "../Home/Home.css"
 import "../../Images/Rapture.jpg"
 
-import { getGenres, getVideogames } from "../../Actions";
+import { getGenres, getPlatforms, getVideogames } from "../../Actions";
 
 
 export function Home(){
 
     const dispatch = useDispatch();
     const allVideogames = useSelector(state => state.videogames)
+    // const detailTemp = useSelector(state => state.videogameDetail)
+    // const platformTemp = useSelector(state => state.plaforms)
     const genres = useSelector(state => state.genres)
 
-    // useEffect(() => {
-    //     dispatch(getVideogames())
-    //   },[])
 
-    //   useEffect(() => {
-    //     dispatch(getGenres());
-    // }, [])
-
-  // Setting the local states: 
-// const [loading, setLoading] = useState(false)
+ 
 const [currentPage, setCurrentPage] = useState(1)
 const [videogamesPerPage, setVideogamesPerPage] = useState(15)
 
@@ -48,6 +42,7 @@ const pages = function(pageNumber) {
 function refresh(e){
     e.preventDefault();
     dispatch(getVideogames());
+    
   }
 
     return(

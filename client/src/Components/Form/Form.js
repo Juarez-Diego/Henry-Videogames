@@ -15,11 +15,17 @@ function formValidation(input){
     if(!input.description){
         formErrors.description = "Description is required";
     }
-    if(!input.parent_platforms || input.parent_platforms.length === 0){
+    if(!input.released){
+        formErrors.released = "A date is required"
+    }
+    if(!input.parent_platforms || input.parent_platforms.length <= 0){
         formErrors.parent_platforms = "Platforms are required";
     }
+    if(!input.rating){
+        formErrors.rating = "Rating is required";
+    }
     if(input.rating < 0 || input.rating > 5){
-        formErrors.rating = "Rating must be between 1 and 5";
+        formErrors.rating = "Rating must be between 0 and 5";
     }
     if(!input.genres || input.genres.length === 0){
         formErrors.genres = "Please include at least one genre";
@@ -68,7 +74,6 @@ function handleSubmit(e){
         ...input,
         [e.target.name]: e.target.value
     }))
-    console.log(input.parent_platforms)
 }
 
 
@@ -78,7 +83,11 @@ function handleSelectPlatforms(e) {
         setInput({
         ...input,
         parent_platforms: [...input.parent_platforms, e.target.value],
-      });
+      })
+      setFormErrors(formValidation({
+        ...input,
+        parent_platforms: e.target.value
+    }))
     }
   }
 
@@ -97,7 +106,11 @@ function handleDelete(e) {
         setInput({
         ...input,
         genres: [...input.genres, e.target.value],
-      });
+      })
+      setFormErrors(formValidation({
+        ...input,
+        genres: e.target.value
+    }))
     }
   }
 
@@ -105,7 +118,7 @@ function handleDelete(e) {
     setInput({
       ...input,
       genres: input.genres.filter((v) => v !== e),
-    });
+    })
   }
 
 
@@ -159,12 +172,13 @@ function submit(e){
 
                     <div className="dropdowns">
 
-                    <div className="dropdown-platforms">
-                    {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)}
+                    <div className="dropdown-platforms"> 
+                    {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)} 
                     <span>Platforms: </span>
                     <select className="dropdown-input" onChange={e => handleSelectPlatforms(e)}>
                     {allPlatforms?.map((e, index) => (<option key={index} className="input-select" name="parent_platforms"  value={e}> {e}</option>))}
                     </select>
+                    
 
                     <ul>{input.parent_platforms.map(e => <li className="platform-list" key={e}>{e} <div onClick={() => handleDelete(e)} className="list-delete">X</div></li>)}</ul>
                     </div>
@@ -179,7 +193,7 @@ function submit(e){
                     </div>
 
                     </div>
-
+                    {console.log(formErrors)}
         
                     <button className="form-button">CREATE</button>
             </form>
