@@ -19,11 +19,13 @@ useEffect(() => {
     dispatch(videogameDetails(gameId))
 },[dispatch, gameId])
 
-// if(Array.isArray(detailedVideogame)) {
+
     return(
         <div className="detail">
-            
-            {detailedVideogame.length > 0 ? 
+            {console.log(detailedVideogame)}
+            {!Array.isArray(detailedVideogame) ? (<div className="name-not-found"><h1>Videogame not found, please try another search</h1></div>) :
+
+            detailedVideogame.length > 0 ? 
             
                 <div className="detail-container">
                     <img className="detail-img" src={detailedVideogame[0].background_image} onError={(e)=>{e.target.onerror = null; e.target.src="https://www.dafont.com/forum/attach/orig/9/9/997801.gif"}} alt="yummy" width="600px" height="300px" ></img>
@@ -51,13 +53,15 @@ useEffect(() => {
                     <div className="detail-description">
                     <p>{detailedVideogame[0].description.replace(/<[^>]*>?/g, '')}</p>
                     </div>
-
-                </div> :  (<Loading />)
-            }   
+                        
+                </div> :  (<Loading />) 
+              }
         </div>
     )
 }
 //     else{ return detailedVideogame}
 // }
 
-export default VideogameDetail
+export default VideogameDetail;
+
+// : (<div className="name-not-found"><h1>Videogame not found, please try another search</h1></div>)}

@@ -75,7 +75,7 @@ router.get("/:gameId", async (req, res) => {
         res.json(apiDetails );
 
       } catch (err) {
-        res.status(404).json("Videogame ID not found");
+        res.json("Videogame ID not found");
       }
 });
 
