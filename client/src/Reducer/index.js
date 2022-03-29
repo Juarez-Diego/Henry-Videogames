@@ -93,6 +93,7 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 videogames: filtering,
+                allVideogamesCopy: getGenres
              
             }
 

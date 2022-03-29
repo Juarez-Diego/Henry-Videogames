@@ -2,7 +2,9 @@ import React from "react";
 import "../Card/Card.css"
 
 export function Card({name, rating, description, released, background_image, parent_platforms, genres, id}){
+
     return(
+            
         <div className="card-main">
             <img src={background_image} onError={(e)=>{e.target.onerror = null; e.target.src="https://www.dafont.com/forum/attach/orig/9/9/997801.gif"}} alt="yummy" width="120" height="120" className="card_img"></img>
                 <div className="card-content">
@@ -17,6 +19,7 @@ export function Card({name, rating, description, released, background_image, par
                     </div>
                 </div>
         </div>
+ 
     )
 }
 

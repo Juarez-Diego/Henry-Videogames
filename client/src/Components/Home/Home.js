@@ -15,6 +15,7 @@ import "../../Images/Rapture.jpg"
 import { getGenres, getPlatforms, getVideogames } from "../../Actions";
 
 
+
 export function Home(){
 
     const dispatch = useDispatch();
@@ -54,18 +55,18 @@ function refresh(e){
             <SearchBar />
             <Filters />
             
-                {/* <div className="home_paginado"> */}
+                
                 <Paginado 
                     videogamesPerPage={videogamesPerPage}
                     allVideogames={allVideogames.length}
                     pages={pages}
                 />
-                {/* </div>  */}
+                
 
                 {allVideogames.length == 0 && allVideogames  ? (<Loading />) :
                 <div className="container">
                 {
-                    currentVideogame?.map(e => {
+                     Array.isArray(currentVideogame) ? currentVideogame?.map(e => {
                         return (
                             <div className="card">
                         <Fragment>
@@ -81,7 +82,7 @@ function refresh(e){
                             </Link>
                          </Fragment>
                          </div>
-                    )})
+                    )}) : (<div className="name-not-found"><h1>Videogame not found, please try another search</h1></div>)
                 } 
                 </div>
                 }
