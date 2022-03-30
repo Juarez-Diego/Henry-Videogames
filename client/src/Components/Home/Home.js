@@ -12,22 +12,22 @@ import Loading from "../Loading/Loading";
 import "../Home/Home.css"
 import "../../Images/Rapture.jpg"
 
-import { getGenres, getPlatforms, getVideogames } from "../../Actions";
+import {  getGenres, getVideogames } from "../../Actions";
 
 
 
 export function Home(){
 
-    const dispatch = useDispatch();
-    const allVideogames = useSelector(state => state.videogames)
-    // const detailTemp = useSelector(state => state.videogameDetail)
-    // const platformTemp = useSelector(state => state.plaforms)
-    const genres = useSelector(state => state.genres)
+const dispatch = useDispatch();
+const allVideogames = useSelector(state => state.videogames)
+const copyVideogames = useSelector(state => state.allVideogamesCopy)
+    // const genres = useSelector(state => state.genres)
 
 
  
 const [currentPage, setCurrentPage] = useState(1)
 const [videogamesPerPage, setVideogamesPerPage] = useState(15)
+
 
 
 //Get current videogames
@@ -43,8 +43,8 @@ const pages = function(pageNumber) {
 function refresh(e){
     e.preventDefault();
     dispatch(getVideogames());
-    
   }
+
 
     return(
         <div className="background-image">

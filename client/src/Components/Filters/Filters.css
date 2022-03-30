@@ -19,6 +19,7 @@
 }
 
 .filters-source{
+    cursor: pointer;
     margin-top: 7px;
     font-size: medium;
     color: #EFF7F6;

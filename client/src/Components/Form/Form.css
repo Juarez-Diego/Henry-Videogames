@@ -145,7 +145,12 @@
     outline : #EFF7F6;
 }
 
+.input-released{
+    cursor: pointer;
+}
+
 .dropdown-input{
+    cursor: pointer;
     height: 20px;
     width: 300px;
     margin: auto;

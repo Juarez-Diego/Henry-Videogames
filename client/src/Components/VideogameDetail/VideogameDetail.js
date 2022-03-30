@@ -28,8 +28,11 @@ useEffect(() => {
             detailedVideogame.length > 0 ? 
             
                 <div className="detail-container">
-                    <img className="detail-img" src={detailedVideogame[0].background_image} onError={(e)=>{e.target.onerror = null; e.target.src="https://www.dafont.com/forum/attach/orig/9/9/997801.gif"}} alt="yummy" width="600px" height="300px" ></img>
 
+                    <div className="img-title-genres-rating">
+                    <img className="detail-img" src={detailedVideogame[0].background_image} onError={(e)=>{e.target.onerror = null; e.target.src="https://www.dafont.com/forum/attach/orig/9/9/997801.gif"}} alt="img" width="600px" height="300px" ></img>
+
+                    <div className="title-genres-rating">
                     <div className="detail-title">
                     <h1>{detailedVideogame[0].name}</h1>
                     </div>
@@ -41,13 +44,15 @@ useEffect(() => {
                     <div className="detail-rating">
                     <h3>Rating: {detailedVideogame[0].rating}</h3>
                     </div>
-
-                    <div className="detail-platforms">
-                    <h3>Platforms: {detailedVideogame[0].parent_platforms.join(", ")}</h3>
+                    </div>
                     </div>
 
-                    <div className="description-title">
-                    <h2>Description</h2>
+                    <div className="detail-platforms">
+                    <h2>Platforms: {detailedVideogame[0].parent_platforms.join(", ")}</h2>
+                    </div>
+
+                    <div>
+                    <h2 className="description-title">Description</h2>
                     </div>
 
                     <div className="detail-description">

@@ -4,11 +4,16 @@
 } */
 
 .nav {
+    
     display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	height: 60px;
     background-color: #043b41;
+
+    border-style: solid;
+    border-color: transparent;
+    border-bottom-color: #b7e4c7
 }
 
 .navLink{

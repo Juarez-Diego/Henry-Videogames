@@ -125,20 +125,20 @@ export function Form() {
         formValidation(e)
     }
 
-    function auxiliar(e){
-        setFormErrors(formValidation({
-            ...input,
-            genres: e.target.value
-        }))
-        setFormErrors(formValidation({
-            ...input,
-            parent_platforms: e.target.value
-        }))
-    }
+    // function auxiliar(e){
+    //     setFormErrors(formValidation({
+    //         ...input,
+    //         genres: e.target.value
+    //     }))
+    //     setFormErrors(formValidation({
+    //         ...input,
+    //         parent_platforms: e.target.value
+    //     }))
+    // }
 
     function submit(e) {
         e.preventDefault()
-        if (Object.values(formErrors).length > 0 || input.name === "") {
+        if (Object.values(formErrors).length > 0 || input.name === "" || input.parent_platforms.length === 0 || input.genres.length === 0) {
             alert("Please fill in all the required fields")
         } else {
             dispatch(createVideogame(input))
@@ -164,7 +164,7 @@ export function Form() {
                         <br />
 
                         <label className="input-labels">Released: </label>
-                        <input className="input-name" type="date" value={input.released} name="released" onChange={handleSubmit}></input>
+                        <input className="input-name input-released" type="date" value={input.released} name="released" onChange={handleSubmit}></input>
                         {formErrors.released && (<p className="warning">{formErrors.released}</p>)}
                         <br />
 
@@ -188,9 +188,8 @@ export function Form() {
 
                         <div className="dropdown-platforms">
 
-
+                            {console.log(formErrors.parent_platforms)}
                             {formErrors.parent_platforms && (<p className="warning">{formErrors.parent_platforms}</p>)}
-
 
                             <span>Platforms: </span>
                             <select className="dropdown-input" onChange={e => handleSelectPlatforms(e)}>
